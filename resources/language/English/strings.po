@@ -32,7 +32,3 @@ msgstr ""
 msgctxt "#30005"
 msgid "Max per page"
 msgstr ""
-
-msgctxt "#30006"
-msgid "Other category"
-msgstr ""

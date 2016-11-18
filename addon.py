@@ -9,7 +9,7 @@ dsphoto = xbmcaddon.Addon()
 BASE_RESOURCE_PATH = os.path.join(dsphoto.getAddonInfo('path'), 'resources')
 sys.path.append(os.path.join(BASE_RESOURCE_PATH, 'lib'))
 
-import gui, parsing
+import gui
 
 addon = xbmcaddon.Addon('plugin.image.ds-photo')
 addonName = addon.getAddonInfo('name')
@@ -163,6 +163,7 @@ class DsPhoto(xbmcgui.Window):
         )
 
         data = urllib.urlencode(values)
+        print '[DSPHOTO] ' + data
         headers = {'Cookie' : 'PHPSESSID=' + self.sid}
         req = urllib2.Request(url, data, headers)
 

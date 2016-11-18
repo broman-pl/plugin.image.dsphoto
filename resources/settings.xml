@@ -4,6 +4,6 @@
         <setting id="host" type="text" label="30002" default=""/>
         <setting id="username" type="text" label="30003" default=""/>
         <setting id="password" type="text" label="30004" default=""/>
-        <setting id="page_limit" type="enum" label="30005" values="150|300|600" default="150" />
+        <setting id="page_limit" type="labelenum" label="30005" values="150|300|600" default="150" />
     </category>
 </settings>
