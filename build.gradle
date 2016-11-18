@@ -1,0 +1,66 @@
+defaultTasks 'hello'
+
+group = project.name
+version = '0.0.1'
+project.ext {
+    packageName = group
+    packageNameFull = packageName + '-' + version
+    packageFileName = packageName + '.zip'
+    localKodiAddonsLocation = ''
+}
+
+task hello {
+    doLast {
+        println 'Gradle build script for Kodi image plugin DSPhoto-' + version
+    }
+}
+
+task prepBundle {
+    FileTree tree = fileTree(dir: './')
+    tree.include '**/*.py'
+    tree.include 'addon.xml'
+    tree.include 'icon.png'
+    tree.include '**/resources/**'
+    tree.exclude '.gradle'
+    tree.exclude '.idea'
+    tree.exclude '**/target'
+    tree.exclude '**/tmp'
+
+    outputs.files tree
+}
+
+task showFilelist(dependsOn: prepBundle) {
+    doLast {
+        println "Show files included in package"
+        prepBundle.outputs.files.each {
+            println "\t ${it}"
+        }
+    }
+}
+
+task copyFilesForPackage(type: Copy, dependsOn: prepBundle) {
+    from prepBundle.outputs.files
+    into 'target/' + packageName
+}
+
+task createBundle(type: Zip, dependsOn: prepBundle, description : 'Create the zip file of the source.') {
+    baseName packageNameFull
+    from prepBundle.outputs.files
+    exclude packageNameFull
+    into packageName
+    destinationDir file('target')
+}
+
+task copyTask(type: Copy, dependsOn: createBundle) {
+    from packageFileName
+    into localKodiAddonsLocation
+
+    println "File to copy: " + packageFileName
+}
+
+task cleanBuild(type:Delete) {
+    delete 'target'
+    delete packageFileName
+
+    println "File to delete: " + packageFileName
+}

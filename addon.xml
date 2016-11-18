@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.image.ds-photo" name="ds-photo" version="0.0.1" provider-name="broman">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>image</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">DS Photo: Synology photo albums browser</summary>
+		<summary lang="pl">DS Photo: Synology przeglądarka albumów ze zdjęciami</summary>
+		<description lang="en">DS Photo</description>
+		<description lang="pl">DS Photo</description>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<forum>http://broman.pl/addon</forum>
+		<source>http://broman.pl/addon</source>
+		<email>addon@some-email.com</email>
+	</extension>
+</addon>
