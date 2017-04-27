@@ -33,7 +33,7 @@ class DsPhoto(xbmcgui.Window):
         self.host = self.getSetting('host')
         self.username = self.getSetting('username')
         self.password = self.getSetting('password')
-        self.items_limit = self.getSetting('page_limit')
+        self.items_limit = int(self.getSetting('page_limit'))
 
         print "[DSPHOTO] initialization"
         self.arguments = sys.argv[2][1:]
